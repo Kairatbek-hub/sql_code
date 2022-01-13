@@ -1,0 +1,119 @@
+CREATE TABLE student(
+id SERIAL PRIMARY KEY NOT NULL ,
+first_name VARCHAR(250) NOT NULL ,
+last_name VARCHAR(250) NOT NULL ,
+gender VARCHAR(250) NOT NULL ,
+date_of_birth DATE NOT NULL,
+email VARCHAR(150)
+);
+
+INSERT INTO student(first_name, last_name, gender, date_of_birth, email)
+VALUES ('Aizat','Abdieva', 'female', DATE'1999-01-01', 'aizat@gmail.com'),
+('Jibek','Janyshova', 'female', DATE'1995-01-01', 'jibek@gmail.com');
+
+UPDATE student SET first_name = 'Ali' WHERE first_name = 'Asan';
+UPDATE student SET first_name = 'Jibek' WHERE id = 4;
+ALTER TABLE student RENAME TO students;
+DROP TABLE student;
+
+
+CREATE TABLE trainers(
+id SERIAL PRIMARY KEY NOT NULL,
+first_name VARCHAR(100) NOT NULL,
+gender VARCHAR(50) NOT NULL,
+tel_number INT,
+salary INT NOT NULL
+);
+INSERT INTO trainers(first_name, gender, tel_number, salary)
+VALUES('Maksat', 'male', 0775253654, 20000),
+('Belek', 'male', 0555456325, 21000),
+('Gulzat', 'female', 0700562564,22000);
+
+UPDATE trainers SET first_name = 'Ali' WHERE id = 2;
+DELETE FROM trainers where first_name = 'Ali';
+SELECT * FROM trainers;
+SELECT tel_number, salary FROM trainers WHERE first_name = 'Gulzat';
+ALTER TABLE trainers RENAME COLUMN first_name TO trainer_name;
+DROP TABLE trainers;
+
+
+CREATE TABLE users(
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+age INT NOT NULL
+);
+INSERT INTO users(name, age)
+VALUES('Ali', 25),('Sezim', 19),('Maksat', 24);
+
+SELECT name FROM users WHERE id = 2;
+SELECT name from users;
+SELECT id from users where name = 'Maksat';
+
+
+CREATE TABLE university(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+university_name VARCHAR(250) NOT NULL ,
+address VARCHAR(200) NOT NULL
+);
+INSERT INTO university(university_name, address)
+VALUES ('Alatoo', 'Ankara 123'),('Manas','Manas 25'),('KRSU', 'Kievskii 36');
+
+ALTER TABLE university RENAME TO universities;
+
+CREATE TABLE countries(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+name VARCHAR(200) UNIQUE NOT NULL ,
+capital VARCHAR(150) NOT NULL ,
+population INT NOT NULL
+);
+INSERT INTO countries(name, capital, population)
+VALUES('Kyrgyzstan','Bishkek',6000000),('Uzbekstan','Tashkent',25000000),
+('USA','Washington',250000000);
+
+CREATE TABLE books(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+book_name VARCHAR(300) NOT NULL ,
+author VARCHAR(250) NOT NULL
+);
+INSERT INTO books(book_name, author)
+VALUES('Harry Potter', 'J. K. Rowling'),
+('Lord of the Rings', 'J. R. R. Tolkien');
+DROP TABLE books;
+
+CREATE TABLE mobile_phones(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+brand VARCHAR(150) NOT NULL ,
+price INT NOT NULL
+);
+INSERT INTO mobile_phones(brand, price)
+VALUES('Poco m3',15000),('Galaxy j3',10000),('Samsung a10',9000);
+
+create table butters(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+name VARCHAR(100) NOT NULL ,
+produced_day TIMESTAMP NOT NULL ,
+price int not null
+);
+INSERT INTO butters(name, produced_day, price)
+VALUES('bereke', '2022-01-12',45),('shedevr', '2022-01-12',60),
+('belovodskii', '2022-01-12',85);
+DROP TABLE butters;
+
+CREATE TABLE clients(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+first_name VARCHAR(250)NOT NULL ,
+tel_number INT
+);
+INSERT INTO clients(first_name, tel_number)
+VALUES('Akmat', 0555632656),('Samara',0700356155),('Dinara',0222564155);
+
+CREATE TABLE sports(
+id SERIAL PRIMARY KEY UNIQUE NOT NULL ,
+sport_name VARCHAR(50) UNIQUE NOT NULL ,
+sport_type VARCHAR(50)
+);
+INSERT INTO sports(sport_name, sport_type)
+VALUES('Football','outdoor'),('Valeball','indoor'),
+('Athletic','outdoor'),('Basketball','indoor');
+
+DROP TABLE sports;
