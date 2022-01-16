@@ -1,0 +1,19 @@
+
+SELECT * FROM customer WHERE country = 'Canada';
+SELECT DISTINCT country FROM customer;
+SELECT COUNT(*) FROM orders;
+SELECT MAX(total_amount) FROM orders;
+SELECT SUM(total_amount) FROM orders;
+SELECT SUM(total_amount) FROM orders WHERE order_date BETWEEN '2014-01-01' AND '2014-12-31';
+SELECT AVG(total_amount) FROM orders;
+SELECT AVG(total_amount), customer_id FROM orders GROUP BY customer_id;
+SELECT * FROM customer WHERE country IN ('Brazil','Spain');
+SELECT * FROM orders WHERE order_date BETWEEN '2013-01-01' AND '2014-12-31' AND total_amount < 100;
+SELECT * FROM customer WHERE country IN ('Spain','Italy','Germany','France') ORDER BY country;
+SELECT DISTINCT customer.country FROM customer JOIN supplier ON supplier.country = customer.country;
+SELECT * FROM customer WHERE first_name LIKE 'Jo%';
+SELECT * FROM customer WHERE first_name LIKE '___a';
+SELECT COUNT(customer), country FROM customer GROUP BY country;
+SELECT COUNT(customer), country FROM customer GROUP BY country ORDER BY COUNT(customer) DESC;
+SELECT SUM(total_amount), COUNT(orders) FROM orders GROUP BY customer_id ORDER BY SUM(total_amount);
+SELECT SUM(total_amount), COUNT(orders) FROM orders GROUP BY customer_id HAVING COUNT(orders) > 20;
